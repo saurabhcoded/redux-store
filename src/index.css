@@ -30,3 +30,15 @@ code {
   left: -8px;
   top: -15px;
 }
+li {
+  list-style: none;
+}
+.social_icons {
+  text-align: center;
+}
+.social_icons li {
+  margin: 5px;
+}
+.navbar-toggler {
+  box-shadow: none !important;
+}

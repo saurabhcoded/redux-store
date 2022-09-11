@@ -11,21 +11,27 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import { Provider } from "react-redux";
+import store from "./store/store";
+import { Toaster } from "react-hot-toast";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <Navbar />
-      <div className="min-vh-100 py-4">
-        <Routes>
-          <Route path="/" element={<App />}></Route>
-          <Route path="/cart" element={<Cart />}></Route>
-          <Route path="/about" element={<About />}></Route>
-          <Route path="/contact" element={<Contact />}></Route>
-        </Routes>
-      </div>
-      <Footer />
+      <Provider store={store}>
+        <Navbar />
+        <Toaster />
+        <div className="min-vh-100 py-4">
+          <Routes>
+            <Route path="/" element={<App />}></Route>
+            <Route path="/cart" element={<Cart />}></Route>
+            <Route path="/about" element={<About />}></Route>
+            <Route path="/contact" element={<Contact />}></Route>
+          </Routes>
+        </div>
+        <Footer />
+      </Provider>
     </BrowserRouter>
   </React.StrictMode>
 );

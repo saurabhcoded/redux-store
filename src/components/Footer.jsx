@@ -14,7 +14,7 @@ const Footer = () => {
               dolore commodi quis?
             </p>
           </div>
-          <div className="col-md-2">
+          <div className=" col-6 col-md-2">
             <h5 className="text-white text-uppercase">Useful Links</h5>
             <ul className="ps-0">
               <li className="text-white">
@@ -35,7 +35,7 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-          <div className="col-md-2">
+          <div className="col-6 col-md-2">
             <h5 className="text-white text-uppercase">Useful Links</h5>
             <ul className="ps-0">
               <li className="text-white">
@@ -58,7 +58,7 @@ const Footer = () => {
           </div>
           <div className="col-md-4 text-white">
             <h5 className="text-uppercase">Follow</h5>
-            <ul>
+            <ul className="ps-0 d-flex social_icons">
               <li>Facebook</li>
               <li>Twitter</li>
               <li>Instagram</li>

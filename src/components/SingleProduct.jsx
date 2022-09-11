@@ -1,11 +1,19 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { add } from "../store/cartSlice";
+import { toast } from "react-hot-toast";
 
 const SingleProduct = (props) => {
-  const { id, title, description, image, price, rating } = props.product;
+  const dispatch = useDispatch();
+  const { title, description, image, price, rating } = props.product;
+  const handleAdd = (product) => {
+    dispatch(add(product));
+    toast.success(product.title.slice(0, 10) + "..." + " item added to cart");
+  };
   return (
-    <div className="col-6 col-md-3 col-lg-2 " key={id}>
+    <div className="col-6 col-md-4 col-lg-3 ">
       <div
-        className="bg-white shadow p-3 rounded-3 d-flex flex-column justify-content-between"
+        className="bg-white shadow p-2  p-sm-3 rounded-3 d-flex flex-column justify-content-between"
         style={{ minHeight: "380px" }}
       >
         <div>
@@ -19,7 +27,7 @@ const SingleProduct = (props) => {
             <h6>{title.slice(0, 20) + "..."}</h6>
             <div>
               <small>
-                {rating.rate} <i class="bi bi-star-half text-warning"></i>
+                {rating.rate} <i className="bi bi-star-half text-warning"></i>
               </small>
               (<small>{rating.count}</small>)
             </div>
@@ -27,7 +35,7 @@ const SingleProduct = (props) => {
               className="text-secondary"
               style={{ wordWrap: "break-word", fontSize: "14px" }}
             >
-              <small>{description.slice(0, 25) + "..."}</small>
+              <small>{description.slice(0, 80) + "..."}</small>
             </p>
           </div>
         </div>
@@ -35,7 +43,10 @@ const SingleProduct = (props) => {
           <h6>
             <small>{price}$</small>
           </h6>
-          <button className="btn btn-success   text-white btn-sm px-2">
+          <button
+            className="btn btn-success   text-white btn-sm px-2"
+            onClick={() => handleAdd(props.product)}
+          >
             <small>add&nbsp;cart</small>
           </button>
         </div>
