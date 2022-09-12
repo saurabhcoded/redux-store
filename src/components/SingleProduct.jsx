@@ -8,7 +8,7 @@ const SingleProduct = (props) => {
   const { title, description, image, price, rating } = props.product;
   const handleAdd = (product) => {
     dispatch(add(product));
-    toast.success(product.title.slice(0, 10) + "..." + " item added to cart");
+    toast.success(product.title.slice(0, 10) + " ...item added to cart");
   };
   return (
     <div className="col-6 col-md-4 col-lg-3 ">

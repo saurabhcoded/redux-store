@@ -1,6 +1,4 @@
-import axios from "axios";
 import React from "react";
-import { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProduct, STATUSES } from "../store/productSlice";
@@ -22,8 +20,8 @@ const ProductContainer = () => {
     //   }
     // }
     // getProducts();
-  }, []);
-  if (status == STATUSES.LOADING) {
+  }, [dispatch]);
+  if (status === STATUSES.LOADING) {
     return (
       <div className="continer text-center py-5">
         <div className="spinner-border text-primary" role="status">
@@ -31,7 +29,7 @@ const ProductContainer = () => {
         </div>
       </div>
     );
-  } else if (status == STATUSES.IDLE) {
+  } else if (status === STATUSES.IDLE) {
     return (
       <div className="py-3">
         <h5 className="text-secondary fw-bold">OUR PRODUCTS</h5>

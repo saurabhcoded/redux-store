@@ -14,23 +14,28 @@ import Contact from "./pages/Contact";
 import { Provider } from "react-redux";
 import store from "./store/store";
 import { Toaster } from "react-hot-toast";
+import { PersistGate } from "redux-persist/integration/react";
+import { persistStore } from "redux-persist";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+let persistor = persistStore(store);
 root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Provider store={store}>
-        <Navbar />
-        <Toaster />
-        <div className="min-vh-100 py-4">
-          <Routes>
-            <Route path="/" element={<App />}></Route>
-            <Route path="/cart" element={<Cart />}></Route>
-            <Route path="/about" element={<About />}></Route>
-            <Route path="/contact" element={<Contact />}></Route>
-          </Routes>
-        </div>
-        <Footer />
+        <PersistGate persistor={persistor}>
+          <Navbar />
+          <Toaster />
+          <div className="min-vh-100 py-4">
+            <Routes>
+              <Route path="/" element={<App />}></Route>
+              <Route path="/cart" element={<Cart />}></Route>
+              <Route path="/about" element={<About />}></Route>
+              <Route path="/contact" element={<Contact />}></Route>
+            </Routes>
+          </div>
+          <Footer />
+        </PersistGate>
       </Provider>
     </BrowserRouter>
   </React.StrictMode>
